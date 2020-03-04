@@ -1,0 +1,25 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    key_name: id_rsa
+    region: eu-west-1
+    id: "web-app"
+
+  tasks:
+    - name: Create EC2 Instance
+      ec2:
+        id: "{{ id }}"
+        group_id: sg-0dbe65c9b874d5dee
+        image: ami-0a0d2dc2f521ddce6
+        instance_type: t2.micro
+        key_name: "{{ key_name }}"
+        region: "{{ region }}"
+        aws_access_key: "{{ ec2_access_key }}"
+        aws_secret_key: "{{ ec2_secret_key }}"
+        wait: true
+        count: 1
+

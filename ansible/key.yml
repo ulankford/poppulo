@@ -1,0 +1,18 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    key_name: id_rsa
+    region: eu-west-1
+
+  tasks:
+    - name: Upload public key to AWS
+      ec2_key:
+        name: "{{ key_name }}"
+        key_material: "{{ lookup('file', '/home/ec2-user/.ssh/{{ key_name }}.pub') }}"
+        region: "{{ region }}"
+        aws_access_key: "{{ ec2_access_key }}"
+        aws_secret_key: "{{ ec2_secret_key }}"
