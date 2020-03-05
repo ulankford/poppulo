@@ -27,7 +27,6 @@
     - name: Write Public IP address to host file
       lineinfile:
         path: ~/poppulo/ansible/hosts
-        regexp: '[aws]'
-        insertafter: '^[aws]'
+        insertafter: [aws_poppulo_webapp]
         line: "{{ item.public_ip }}"
       with_items: "{{ result.instances }}"
