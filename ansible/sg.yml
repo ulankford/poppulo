@@ -1,0 +1,19 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Create AWS Security Group for Poppulo Webapp
+      ec2_group:
+        name: "{{ security_group }}"
+        description: "Security group for app {{ id }}"
+        region: "{{ region }}"
+        aws_access_key: "{{ ec2_access_key }}"
+        aws_secret_key: "{{ ec2_secret_key }}"
+        rules:
+          - proto: "{{ security_group_protocol }}"
+            ports:
+              - "{{ security_group_port }}"
+            cidr_ip: "{{ cidr_ip }}" 
