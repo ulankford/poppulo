@@ -4,10 +4,6 @@
   connection: local
   gather_facts: false
 
-  vars:
-    key_name: id_rsa
-    region: eu-west-1
-
   tasks:
     - name: Upload public key to AWS
       ec2_key:
