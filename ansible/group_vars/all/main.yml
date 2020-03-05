@@ -6,7 +6,14 @@ image: ami-0a0d2dc2f521ddce6
 instance_type: t2.micro
 region: eu-west-1
 
-security_group: "poppulo-{{ id }}"
-security_group_protocol: tcp
-security_group_port: 22
-cidr_ip: 0.0.0.0/0
+aws_sg:
+  - name: "poppulo-{{ id }}"
+    description: "Security Group for {{ id }}"
+    rules:
+      - proto: tcp
+        ports: 22
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        ports: 80
+        cidr_ip: 0.0.0.0/0
+
