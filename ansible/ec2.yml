@@ -46,6 +46,11 @@
             enabled: yes
 
         - name: Copy over built WAR file
-          copy: 
+          copy:
+            src: ~/poppulo/ansible/roles/build/files/hello.war
+            dest: ~/hello.war
+            owner: ec2-user
+            group: ec2-user
+            mode: 0644
 
       become: true
