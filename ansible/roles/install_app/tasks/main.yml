@@ -21,10 +21,16 @@
     group: ec2-user
     mode: 0644
 
-- name: Build Docker Image file
-  docker_image:
-    name: ultan.lankford/poppulo_webapp
-    build:
-      dockerfile: preset
-      path: /home/ec2-user/poppulo/ansible/roles/install_app/files/Dockerfile
-      
+- name: Copy Dockerfile to server
+  copy:
+    src: /home/ec2-user/poppulo/ansible/roles/install_app/files/Dockerfile
+    dest: /home/ec2-user/Dockerfile
+    owner: ec2-user
+    group: ec2-user
+    mode: 0644
+
+- name: Create Docker Image
+  shell: "docker image build -t ultan_lankford/tomcat-pop-hello ./"
+
+- name: Run Docker Image as a Container
+  shell: "docker container run -d --publish 80:8080 ultan_lankford/tomcat-pop-hello"
