@@ -3,5 +3,6 @@
   connection: local
   gather_facts: false
 
-  include_role:
-    name: build
+  tasks:
+  - include_role: 
+      name:  build
