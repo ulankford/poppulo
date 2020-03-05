@@ -4,5 +4,5 @@
   gather_facts: false
 
   tasks:
-  - include_role: 
-      name:  build
+  - include_role:
+      name:  build_app

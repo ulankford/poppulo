@@ -1,0 +1,9 @@
+---
+
+- hosts: aws_poppulo_webapp
+  gather_facts: false
+  become: true
+
+  tasks:
+  - include_role:
+      name:  install_app

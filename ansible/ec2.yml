@@ -5,28 +5,5 @@
   gather_facts: false
 
   tasks:
-    - name: Create EC2 Instance
-      ec2:
-        id: "{{ id }}"
-        group_id: sg-0dbe65c9b874d5dee
-        image: "{{ image }}"
-        instance_type: "{{ instance_type }}"
-        key_name: "{{ key_name }}"
-        region: "{{ region }}"
-        aws_access_key: "{{ ec2_access_key }}"
-        aws_secret_key: "{{ ec2_secret_key }}"
-        wait: true
-        count: 1
-      register: result
-
-    - name: Get Facts from EC2 Instance
-      debug:
-        msg: "ID: {{ item.id }} - State: {{ item.state }} - Public DNS: {{ item.public_dns_name }} - Public IP: {{ item.public_ip }}"
-      with_items: "{{ result.instances }}"
-
-    - name: Write Public IP address to host file
-      lineinfile:
-        path: ~/poppulo/ansible/hosts
-        insertafter: [aws_poppulo_webapp]
-        line: "{{ item.public_ip }}"
-      with_items: "{{ result.instances }}"
+  - include_role:
+      name:  aws_create_ec2
