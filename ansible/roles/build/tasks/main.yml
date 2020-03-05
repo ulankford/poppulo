@@ -1,0 +1,3 @@
+---
+  - name: Build WAR file from src code
+    shell: jar -cvf ~/poppulo/ansible/roles/build/files/hello.war ~/poppulo/ansible/roles/build/files/hello

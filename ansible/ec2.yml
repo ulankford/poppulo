@@ -28,7 +28,7 @@
     - name: These tasks are on the new EC2 instance
       block:
         - name: Enable RHEL extras Repo
-          shell: "yum-config-manager --enable rhui-REGION-rhel-server-extras" 
+          shell: "yum-config-manager --enable rhui-REGION-rhel-server-extras"
           delegate_to: "{{ item.public_ip }}"
           with_items: "{{ result.instances }}"
 
@@ -45,5 +45,7 @@
             state: started
             enabled: yes
 
-      become: true
+        - name: Copy over built WAR file
+          copy: 
 
+      become: true
