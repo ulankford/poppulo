@@ -9,6 +9,7 @@ region: eu-west-1
 aws_sg:
   - name: "poppulo-{{ id }}"
     description: "Security Group for {{ id }}"
+    vpcid: vpc-1aa1bf7c
     rules:
       - proto: tcp
         ports: 22
@@ -16,4 +17,3 @@ aws_sg:
       - proto: tcp
         ports: 80
         cidr_ip: 0.0.0.0/0
-
