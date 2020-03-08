@@ -3,7 +3,6 @@
   ec2_group:
     name: "{{ item.name }}"
     description: "{{ item.description }}"
-    group_id: "{{ item.group_id }}"
     vpc_id: "{{ item.vpcid }}"
     region: "{{ region }}"
     aws_access_key: "{{ ec2_access_key }}"
