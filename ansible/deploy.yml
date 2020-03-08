@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  roles:
+    - aws_key
+    - aws_security_group
+    - aws_create_ec2
+    - build_app
+
+    
