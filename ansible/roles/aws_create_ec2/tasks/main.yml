@@ -31,4 +31,4 @@
   wait_for_connection:
     delay: 60
     timeout: 320
-  loop: "{{ result.instances }}"
+  with_items: "{{ result.instances }}"
