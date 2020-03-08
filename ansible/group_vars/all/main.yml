@@ -11,12 +11,11 @@ aws_sg:
   - name: "poppulo-{{ id }}"
     description: "Security Group for {{ id }}"
     vpcid: vpc-1aa1bf7c
+    group_id: "{{ sg_id }}"
     rules:
       - proto: tcp
         ports: 22
         cidr_ip: 0.0.0.0/0
-        group_id: "{{ sg_id }}"
       - proto: tcp
         ports: 80
         cidr_ip: 0.0.0.0/0
-        group_id: "{{ sg_id }}"
