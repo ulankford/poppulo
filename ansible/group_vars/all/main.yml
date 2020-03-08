@@ -5,6 +5,7 @@ id: web-app
 image: ami-0a0d2dc2f521ddce6
 instance_type: t2.micro
 region: eu-west-1
+sg_id: sg-0338346cf3de63038
 
 aws_sg:
   - name: "poppulo-{{ id }}"
@@ -14,6 +15,8 @@ aws_sg:
       - proto: tcp
         ports: 22
         cidr_ip: 0.0.0.0/0
+        group_id: "{{ sg_id }}"
       - proto: tcp
         ports: 80
         cidr_ip: 0.0.0.0/0
+        group_id: "{{ sg_id }}"
