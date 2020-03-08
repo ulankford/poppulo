@@ -29,8 +29,22 @@
     group: ec2-user
     mode: 0644
 
+#- name: Create Docker Image
+#  shell: "docker image build -t ultan_lankford/tomcat-pop-hello ./"
+
 - name: Create Docker Image
-  shell: "docker image build -t ultan_lankford/tomcat-pop-hello ./"
+  docker_image:
+    name: ultan_lankford/tomcat-pop-hello:latest
+    build: ./
+    source: build
+
+#- name: Run Docker Image as a Container
+#  shell: "docker container run -d --publish 80:8080 ultan_lankford/tomcat-pop-hello"
 
 - name: Run Docker Image as a Container
-  shell: "docker container run -d --publish 80:8080 ultan_lankford/tomcat-pop-hello"
+  docker_container:
+    name: hello-world-poppulo
+    image: utan_lankford/tomcat-pop-hello
+    state: started
+    detach: yes
+    published_ports: 80:8080
