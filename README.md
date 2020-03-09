@@ -15,7 +15,7 @@ This jumpbox has been setup with the following:
 
 
 *Deploy Steps*
- 1. ssh to jumpbox which acts as an ansible control node.
+ 1. ssh to jumpbox ( IP Address is 34.243.48.102 ) which acts as an ansible control node.
 The pop.pem key file will be attached in the email which will be used to log into this server. Make sure to do a chmod 0600 pop.pem for it to work if using a terminal or cli
 
 `ssh -i pop.pem ec2-user@34.243.48.102`
