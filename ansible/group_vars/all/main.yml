@@ -1,6 +1,7 @@
 ---
 key_name: pop-webapp
 id: web-app
+app_port: 80
 
 image: ami-0a0d2dc2f521ddce6
 instance_type: t2.micro
