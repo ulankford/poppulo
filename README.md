@@ -59,7 +59,7 @@ The following tasks done here are:
 
  - Use the Public IP address and get your browser to point to it
  
-   `http://< Public_IP_of_Instance >/hello
+   `http://< Public_IP_of_Instance >/hello`
   - Alternatively, you can use a linux tools like curl or elinks (these are installed on the jumpbox already for your convienicne)
    `curl http://< Public_IP_of_Instance  >/hello/`
    `elinks http://< Public_IP_of_Instance  >/hello`
