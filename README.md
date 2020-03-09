@@ -28,7 +28,7 @@ The pop.pem key file will be attached in the email which will be used to log int
 
 3. Now we have you the repo cloned, we can now call Ansible playbooks to create our nessesary platform.
 
-`ansible-playbook -i ~/poppulo/ansible/hosts ~/poppulo/ansible/deploy.yml --vault-password-file ~/poppulo/ansible/group_vars/all/vaultfile`
+`ansible-playbook -i ~/poppulo/ansible/hosts ~/poppulo/ansible/deploy.yml --vault-password-file ~/poppulo/ansible/group_vars/all/.vaultpass`
 
 The following tasks done here are:
 
@@ -44,7 +44,7 @@ The following tasks done here are:
 
 4. The final step is to deploy the application to the newly created ec2 aws instance. 
 
-`ansible-playbook -i ~/poppulo/ansible/hosts ~/poppulo/ansible/install.yml --vault-password-file ~/poppulo/ansible/group_vars/all/vaultfile`
+`ansible-playbook -i ~/poppulo/ansible/hosts ~/poppulo/ansible/install.yml --vault-password-file ~/poppulo/ansible/group_vars/all/.vaultpass`
 
 The following tasks done here are:
    - Enable the nessesary repos to install the docker rpm
