@@ -11,10 +11,6 @@
   with_items: "{{ aws_sg }}"
   register: result
 
-- name: debug
-  debug:
-    var: result
-
 - name: Set group_id fact
   set_fact:
-    group_id: "{{ result.aws_group_id }}"
+    aws_group_id: "{{ result.results[0].group_id }}"
