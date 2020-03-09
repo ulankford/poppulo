@@ -2,20 +2,10 @@
 # poppulo project
 
 *Overview of solution*
-The hello-world web app consists of an index.jsp file that will be served by a docker container running Tomcat
+
+The hello-world web app consists of an index.jsp file that will be served by a docker container running Tomcat.
 The container itself will be running on a EC2 AWS instance that has Docker installed and runnnig as a daemon.
-
-index.jsp
-`
-<html>
-<head>
-<title>Hello World!</title>
-</head>
-<body>
-    <h1>hello world!</h1>
-</body>
-`
-
+index.jsp file can be found in /roles/build_app/files/hello/index.jsp on this repo
 
 This jumpbox has been setup with the following:
  - Ansible 2.9 installed
@@ -54,28 +44,32 @@ The following tasks done here are:
 
 The following tasks done here are:
    - Enable the nessesary repos to install the docker rpm
-    - Install and Start Docker
-    - Copy over the newly built WAR and the Dockerfile
-     - Build our new Docker Image (we use a Tomcat Docker Image from docker.io)
-     - Run our new Image as a Docker container listening on host port 80
+   - Install and Start Docker
+   - Copy over the newly built WAR and the Dockerfile
+   - Build our new Docker Image (we use a Tomcat Docker Image from docker.io)
+   - Run our new Image as a Docker container listening on host port 80
 
 
 
-5. Test that uou can connect to the new web app and it serves you the correct page
+5. Test that one can connect to the new web app and it serves you the correct page
 
  - First you need the public IP, which can be found on the jumpbox under:
-`cat ~/poppulo/ansible/hosts`
-The public IP of the EC2 instance will be under the [aws_poppulo_webapp] ansible group
-  - Use the Public IP address and get your browser to point to it
-  `http://< Public_IP_of_Instance >/hello
+   `cat ~/poppulo/ansible/hosts`
+   The public IP of the EC2 instance will be under the [aws_poppulo_webapp] ansible group
+
+ - Use the Public IP address and get your browser to point to it
+ 
+   `http://< Public_IP_of_Instance >/hello
   - Alternatively, you can use a linux tools like curl or elinks (these are installed on the jumpbox already for your convienicne)
-  ` curl http://< Public_IP_of_Instance  >/hello/`
-  `elinks http://< Public_IP_of_Instance  >/hello`
-  Note the trailing / in the curl command, with this trailing / tomcat returns a 302 redirection message
-  - Lastly, you can connect to the Docker container itself and view the tomcat logs
-  `ssh -i ~/.ssh/pop-webapp < Public_IP_of_Instance  >` 
-  ` sudo docker ps` ( This will output the Container ID )
- ` sudo docker exec -it < docker_container_id > /bin/bash`
- ` cat logs/localhost_access_log* `
+   `curl http://< Public_IP_of_Instance  >/hello/`
+   `elinks http://< Public_IP_of_Instance  >/hello`
+    Note the trailing / in the curl command, with this trailing / tomcat returns a 302 redirection message
+  
+ - Lastly, you can connect to the Docker container itself and view the tomcat logs
+ 
+   `ssh -i ~/.ssh/pop-webapp < Public_IP_of_Instance  >` 
+   `sudo docker ps` ( This will output the Container ID )
+   `sudo docker exec -it < docker_container_id > /bin/bash`
+   `cat logs/localhost_access_log* `
  
   
