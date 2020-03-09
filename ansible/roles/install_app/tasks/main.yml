@@ -32,5 +32,10 @@
 - name: Create Docker Image
   shell: "docker image build -t ultan_lankford/tomcat-pop-hello ./"
 
+- name: Check if container is already running
+  shell: "netstat -atunp | grep {{ app_port }} "
+  register: result
+
 - name: Run Docker Image as a Container
-  shell: "docker container run -d --publish 80:8080 ultan_lankford/tomcat-pop-hello"
+  shell: "docker container run -d --publish {{ app_port }}:8080 ultan_lankford/tomcat-pop-hello"
+  when: result.rc != 1
