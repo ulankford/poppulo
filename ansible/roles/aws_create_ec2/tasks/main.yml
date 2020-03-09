@@ -2,7 +2,7 @@
 - name: Create EC2 Instance
   ec2:
     id: "{{ id }}"
-    group_id: "{{ sg_id }}"
+    group_id: "{{ group_id }}"
     image: "{{ image }}"
     instance_type: "{{ instance_type }}"
     key_name: "{{ key_name }}"

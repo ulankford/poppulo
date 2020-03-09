@@ -5,13 +5,11 @@ id: web-app
 image: ami-0a0d2dc2f521ddce6
 instance_type: t2.micro
 region: eu-west-1
-sg_id: sg-0338346cf3de63038
 
 aws_sg:
   - name: "poppulo-{{ id }}"
     description: "Security Group for {{ id }}"
     vpcid: vpc-1aa1bf7c
-    group_id: "{{ sg_id }}"
     rules:
       - proto: tcp
         ports: 22
